@@ -154,6 +154,8 @@ plotBinCoverage.default <- function(
 #' @param pdf.file.name pdf file name to save the plot [NULL].
 #' @param pdf.width the width of the graphics region in inches [7].
 #' @param pdf.height the height of the graphics region in inches [7].
+#' @param xlims x-limits of the plot
+#' @param ylims y-limits of the plot
 #' @param ... Arguments passed to plot method.
 #'
 #' @examples 
@@ -190,7 +192,9 @@ plotViz <- function(obj,
 	down.sample, 
 	pdf.file.name, 
 	pdf.width, 
-	pdf.height, 
+	pdf.height,
+    xlims,
+    ylims
 	...
 ){
   UseMethod("plotViz", obj);
@@ -217,6 +221,8 @@ plotViz.default <- function(obj,
 		pdf.file.name=NULL,
 		pdf.width=7, 
 		pdf.height=7,
+        xlims=NA,
+        ylims=NA
 		...
 ){	
 	if(missing(obj)){
@@ -242,8 +248,12 @@ plotViz.default <- function(obj,
 	if((x=nrow(data.use)) == 0L){
 		stop("visulization method does not exist, run runViz first!")
 	}
-	xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
-	ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
+    if(is.na(xlims)){
+	    xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
+    }
+    if(is.na(xlims)){
+        ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
+    }
 	
 	cluster = point.color;
 	if(((x=length(cluster)) == 0L) | (is.null(point.color))){
