@@ -248,10 +248,10 @@ plotViz.default <- function(obj,
 	if((x=nrow(data.use)) == 0L){
 		stop("visulization method does not exist, run runViz first!")
 	}
-    if(is.na(xlims)){
+    if(any(is.na(xlims))){
 	    xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
     }
-    if(is.na(xlims)){
+    if(any(is.na(xlims))){
         ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
     }
 	
@@ -454,10 +454,10 @@ plotFeatureSingle.default <- function(
 	idx.ds = sort(sample(seq(ncell), down.sample));
 	data.use = data.use[idx.ds,,drop=FALSE];
 	feature.value = feature.value[idx.ds];
-    if(is.na(xlims)){
+    if(any(is.na(xlims))){
 	    xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
     }
-    if(is.na(ylims)){
+    if(any(is.na(ylims))){
 	    ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
     }
 	
