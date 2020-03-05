@@ -363,6 +363,8 @@ plotFeatureSingle <- function(
 	pdf.width, 
 	pdf.height, 
 	quantiles,
+    xlims,
+    ylims
 	...
 ){
   UseMethod("plotFeatureSingle", obj);
@@ -380,6 +382,8 @@ plotFeatureSingle.default <- function(
 	pdf.width=7, 
 	pdf.height=7,
 	quantiles=c(0.01, 0.99),
+    xlims=NA,
+    ylims=NA
 	...
 ){	
 	if(missing(obj)){
@@ -440,8 +444,12 @@ plotFeatureSingle.default <- function(
 	idx.ds = sort(sample(seq(ncell), down.sample));
 	data.use = data.use[idx.ds,,drop=FALSE];
 	feature.value = feature.value[idx.ds];
-	xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
-	ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
+    if(is.na(xlims)){
+	    xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
+    }
+    if(is.na(ylims)){
+	    ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
+    }
 	
 	plot3D::scatter2D(
 				   x=data.use[,1],
