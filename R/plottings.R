@@ -194,7 +194,7 @@ plotViz <- function(obj,
 	pdf.width, 
 	pdf.height,
     xlims,
-    ylims
+    ylims,
 	...
 ){
   UseMethod("plotViz", obj);
@@ -222,7 +222,7 @@ plotViz.default <- function(obj,
 		pdf.width=7, 
 		pdf.height=7,
         xlims=NA,
-        ylims=NA
+        ylims=NA,
 		...
 ){	
 	if(missing(obj)){
@@ -374,7 +374,7 @@ plotFeatureSingle <- function(
 	pdf.height, 
 	quantiles,
     xlims,
-    ylims
+    ylims,
 	...
 ){
   UseMethod("plotFeatureSingle", obj);
@@ -393,7 +393,7 @@ plotFeatureSingle.default <- function(
 	pdf.height=7,
 	quantiles=c(0.01, 0.99),
     xlims=NA,
-    ylims=NA
+    ylims=NA,
 	...
 ){	
 	if(missing(obj)){
