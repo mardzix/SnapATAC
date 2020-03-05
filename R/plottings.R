@@ -251,7 +251,7 @@ plotViz.default <- function(obj,
     if(any(is.na(xlims))){
 	    xlims = c(-max(abs(data.use[,1])) * 1.05, max(abs(data.use[,1])) * 1.2);
     }
-    if(any(is.na(xlims))){
+    if(any(is.na(ylims))){
         ylims = c(-max(abs(data.use[,2])) * 1.05, max(abs(data.use[,2])) * 1.05);
     }
 	
